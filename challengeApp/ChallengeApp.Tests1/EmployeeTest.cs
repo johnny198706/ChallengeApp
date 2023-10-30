@@ -7,47 +7,65 @@ namespace ChallengeApp.Tests1
       
 
         [Test]
-        public void WhenEmployeeFiveSetScore_ShouldCorrectResult()
+        public void WhatIsMaxGrade()
         {
-            // arrange
-           var employee2 = new Employee("Mateusz", "Zieliñski", 27);
-            employee2.AddScore(10);
-            employee2.AddScore(10);
-            employee2.AddScore(1);
-            employee2.AddScore(1);
-            employee2.AddScore(1);
+            var employee = new Employee("Rafa³", "Stefañski", 32);
 
-            // act
-            var result = employee2.Result;
-           // assert
-           Assert.AreEqual(23, result);
+            employee.AddGrade(7);
+            employee.AddGrade(3);
+            employee.AddGrade(6);
+            employee.AddGrade(7);
+            employee.AddGrade(5);
 
-           
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(7,statistics.Max);
+
         }
-       
-    }
-    public class Test
-    {
-
 
         [Test]
-        public void WhenEmployeeFiveSetPoint_ShouldCorrectResult()
+        public void WhatIsMinGrade()
         {
-            // arrange
-            var employee1 = new Employee("Rafa³", "Stefañski", 32);
-            employee1.AddScore(10);
-            employee1.AddScore(10);
-            employee1.AddScore(-6);
-            employee1.AddScore(-10);
-            employee1.AddScore(-8);
+            var employee = new Employee("Rafa³", "Stefañski", 32);
 
-            // act
-            var result = employee1.Result;
-            // assert
-            Assert.AreEqual(-4, result);
+            employee.AddGrade(7);
+            employee.AddGrade(-3);
+            employee.AddGrade(6);
+            employee.AddGrade(7);
+            employee.AddGrade(5);
 
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(-3,statistics.Min);
 
         }
 
+        [Test]
+        public void WhatIsTheAverageGrade()
+        {
+            var employee = new Employee("Rafa³", "Stefañski", 32);
+
+            employee.AddGrade(7);
+            employee.AddGrade(3);
+            employee.AddGrade(6);
+            employee.AddGrade(7);
+            employee.AddGrade(5);
+
+            var statistics = employee.GetStatistics();  
+
+            Assert.AreEqual(5.6f ,statistics.Average);
+           
+        }
     }
+
+
+
+
+
+
+
+
+   
+
+  
 }
