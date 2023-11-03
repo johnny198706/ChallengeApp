@@ -38,16 +38,19 @@ namespace challengeApp
         public void AddGrade(double grade)
         {
 
-            this.grades.Add((float)grade);
+            var value = (float)grade;
+            this.AddGrade(value);
 
         }
 
         public void AddGrade(decimal grade)
         {
 
-            this.grades.Add((float)grade);
+            var value = (float)grade;
+            this.AddGrade(value);
 
         }
+        
         public void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
@@ -63,18 +66,10 @@ namespace challengeApp
        
         public void AddGrade(long grade)
         {
-            long valueInLong = (long)grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                this.grades.Add(grade);
-            }
-            else
-            {
-                Console.WriteLine("invalid grade value");
-            }
-
-
+            var value = (long)grade;
+            this.AddGrade(value);
         }
+
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
