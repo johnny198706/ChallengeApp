@@ -20,7 +20,6 @@ namespace ChallengeApp.Tests1
             var statistics = employee.GetStatistics();
 
             Assert.AreEqual(7,statistics.Max);
-
         }
 
         [Test]
@@ -37,7 +36,6 @@ namespace ChallengeApp.Tests1
             var statistics = employee.GetStatistics();
 
             Assert.AreEqual(-3,statistics.Min);
-
         }
 
         [Test]
@@ -53,8 +51,7 @@ namespace ChallengeApp.Tests1
 
             var statistics = employee.GetStatistics();  
 
-            Assert.AreEqual(5.6f ,statistics.Average);
-           
+            Assert.AreEqual(5.6f ,statistics.Average);   
         }
     }
 
