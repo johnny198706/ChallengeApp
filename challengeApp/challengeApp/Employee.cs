@@ -89,12 +89,9 @@ namespace challengeApp
             statistics.Min = float.MaxValue;
             foreach (var grade in this.grades)
             {
-                if(grade < 0) 
-                {
                     statistics.Max = Math.Max(statistics.Max, grade);
                     statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
-                }   
+                    statistics.Average += grade;                
             }
             statistics.Average /= this.grades.Count;
             return statistics;
