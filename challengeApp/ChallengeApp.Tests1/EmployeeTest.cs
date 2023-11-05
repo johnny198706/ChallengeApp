@@ -28,14 +28,14 @@ namespace ChallengeApp.Tests1
             var employee = new Employee("Rafa³", "Stefañski", 32);
 
             employee.AddGrade(7);
-            employee.AddGrade(-3);
+            employee.AddGrade(3);
             employee.AddGrade(6);
             employee.AddGrade(7);
             employee.AddGrade(5);
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(-3,statistics.Min);
+            Assert.AreEqual(3,statistics.Min);
         }
 
         [Test]
@@ -53,16 +53,22 @@ namespace ChallengeApp.Tests1
 
             Assert.AreEqual(5.6f ,statistics.Average);   
         }
-    }
 
 
+        [Test]
+        public void WhatIsAverageLetter()
+        {
+            var employee = new Employee("Rafa³", "Stefañski", 32);
 
+            employee.AddGrade(7);
+            employee.AddGrade(30);
+            employee.AddGrade(60);
+            employee.AddGrade(7);
+            employee.AddGrade('a');
 
+            var statistics = employee.GetStatistics();
 
-
-
-
-   
-
-  
+            Assert.AreEqual('C', statistics.AverageLetter);
+        }
+    }  
 }
