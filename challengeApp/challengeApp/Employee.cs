@@ -29,7 +29,7 @@ namespace challengeApp
             }
             else
             {
-                Console.WriteLine("invalid grade value");
+                throw new Exception("invalid grade value");
             }
 
         }
@@ -40,9 +40,37 @@ namespace challengeApp
             {
                 this.AddGrade(result);
             }
+            else if (char.TryParse(grade, out char charResult))
+            {
+                switch (charResult)
+                {
+                    case 'A':
+                    case 'a':
+                        AddGrade(100);
+                        break;
+                    case 'B':
+                    case 'b':
+                        AddGrade(80);
+                        break;
+                    case 'C':
+                    case 'c':
+                        AddGrade(60);
+                        break;
+                    case 'D':
+                    case 'd':
+                        AddGrade(40);
+                        break;
+                    case 'E':
+                    case 'e':
+                        AddGrade(20);
+                        break;
+                    default:
+                        throw new Exception("Wrong Lettter");
+                }
+            }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String in not float");
             }
 
         }
@@ -58,37 +86,7 @@ namespace challengeApp
             float gradeASFloat = grade;
             this.AddGrade(gradeASFloat);
         }
-
-        public void AddGrade(char grade)
-        {            
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    AddGrade(100);
-                    break;
-                case 'B':
-                case 'b':
-                    AddGrade(80);
-                    break;
-                case 'C':
-                case 'c':
-                    AddGrade(60);
-                    break;
-                case 'D':
-                case 'd':
-                    AddGrade(40);
-                    break;
-                case 'E':
-                case 'e':
-                    AddGrade(20);
-                    break;
-                default:
-                    Console.WriteLine("Wring Letter");
-                    break;
-            }
-        }
-       
+     
         public void AddGrade(long grade)
         {
             float gradeASFloat = grade;
