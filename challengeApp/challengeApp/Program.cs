@@ -4,7 +4,7 @@ Console.WriteLine("Witam w Programie MtW do oceny Pracownika");
 Console.WriteLine("=========================================");
 Console.WriteLine();
 
-var employee = new Employee("Rafał", "Stefański", 32);
+var employee = new Employee("Rafał", "Stefański",'M', 32);
 
 while (true)
 {

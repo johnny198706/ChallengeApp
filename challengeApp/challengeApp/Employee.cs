@@ -5,20 +5,15 @@ using ChallengeApp;
 namespace challengeApp
 
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, int age)
+        public Employee(string name, string surname,char sex, int age)
+            :base(name,surname,sex,age)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
+           
         }
-
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
 
         public void AddGrade(float grade)
         {
