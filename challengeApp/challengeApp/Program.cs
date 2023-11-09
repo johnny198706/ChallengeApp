@@ -1,32 +1,43 @@
 ﻿using challengeApp;
+using ChallengeApp;
 
-Console.WriteLine("Witam w Programie MtW do oceny Pracownika");
+Console.WriteLine("Witam w Programie MtW do oceny Kierownika");
 Console.WriteLine("=========================================");
 Console.WriteLine();
 
-var employee = new Employee("Rafał", "Stefański",'M', 32);
-
+//var employee = new Employee("Rafał", "Stefański",'M', 32);
+var manager = new Manager("Sebastian", "Bąk", 'M', 36);
 while (true)
 {
-    Console.WriteLine("Podaj kolejną ocene pracownika: ");
+    Console.WriteLine("Wpisz kolejną ocene kierownika:  ");
     var input = Console.ReadLine();
-    if (input == "q" || input == "Q")
+    if (input == "Q" || input == "q")
     {
         break;
     }
+    
     try
     {
-        employee.AddGrade(input);
+        manager.AddGrade(input);
     }
-    catch (Exception e)
+    catch (Exception m)
     {
-        Console.WriteLine($"Exception catched: {e.Message}");
+        Console.WriteLine($"Exception catched: {m.Message}");
     }
 }
 
-var statistics = employee.GetStatistics();
+//var statistics = employee.GetStatistics();
+
+//Console.WriteLine();
+//Console.WriteLine($"Average: {statistics.Average}");
+//Console.WriteLine($"Max: {statistics.Max}");
+//Console.WriteLine($"Min: {statistics.Min}");
+//Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
+
+var statistics = manager.GetStatistics();
+
 Console.WriteLine();
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
+Console.WriteLine($"AverageNumber: {statistics.AverageNumber}");

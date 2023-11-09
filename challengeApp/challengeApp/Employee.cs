@@ -1,19 +1,24 @@
-﻿
-using ChallengeApp;
+﻿using ChallengeApp;
 
 
 namespace challengeApp
 
 {
-    public class Employee : Person
+    public class Employee : IEmployee
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname,char sex, int age)
-            :base(name,surname,sex,age)
+        public Employee(string name, string surname, char sex, int age)            
         {
-           
+            this.Name = name;
+            this.Surname = surname;
+            this.Sex = sex;
+            this.Age = age;
         }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
+        public int Age { get; private set; }
+        public char Sex { get; private set; }
 
         public void AddGrade(float grade)
         {
@@ -72,7 +77,7 @@ namespace challengeApp
 
         public void AddGrade(double grade)
         {
-           float gradeAsFloat = (float)grade;
+            float gradeAsFloat = (float)grade;
             this.AddGrade(gradeAsFloat);
         }
 
@@ -81,7 +86,7 @@ namespace challengeApp
             float gradeASFloat = grade;
             this.AddGrade(gradeASFloat);
         }
-     
+
         public void AddGrade(long grade)
         {
             float gradeASFloat = grade;
@@ -121,9 +126,9 @@ namespace challengeApp
                     statistics.AverageLetter = 'E';
                     break;
             }
-            
+
             return statistics;
-        }        
+        }
     }
 
 }
