@@ -1,8 +1,7 @@
 ﻿namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
-    {
-        private List<float> grades = new List<float>(); 
+    {       
 
         private const string fileName = "grades.txt";
 
@@ -27,7 +26,7 @@
         }
 
         public override void AddGrade(string grade)
-        {          
+        {
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrade(result);
@@ -86,50 +85,68 @@
 
         public override Statistics GetStatistics()
         {
-           var result = new Statistics();
-
-            if (File.Exists(fileName))
+            var gradesFromFile = this.ReadGradesFromFile();
+            var result = this.CountStatistics(gradesFromFile);
+            return result;
+        }
+        private List<float> ReadGradesFromFile() 
+        {
+            var grades = new List<float>();
+            if (File.Exists($"{fileName}")) 
             {
-                using (var reader = File.OpenText(fileName))
+                using (var reader = File.OpenText($"{fileName}")) 
                 {
                     var line = reader.ReadLine();
                     while (line != null)
                     {
                         var number = float.Parse(line);
-                        result.Average = 0;
-                        result.Max = float.MinValue;
-                        result.Min = float.MaxValue;
-                        foreach (var grade in this.grades)
-                        {
-                            result.Max = Math.Max(result.Max, grade);
-                            result.Min = Math.Min(result.Min, grade);
-                            result.Average += grade;
-                        }
-
-                        result.Average /= this.grades.Count;
-
-                        switch (result.Average)
-                        {
-                            case var average when average >= 80:
-                                result.AverageLetter = 'A';
-                                break;
-                            case var average when average >= 60:
-                                result.AverageLetter = 'B';
-                                break;
-                            case var average when average >= 40:
-                                result.AverageLetter = 'C';
-                                break;
-                            case var average when average >= 20:
-                                result.AverageLetter = 'D';
-                                break;
-                            default:
-                                result.AverageLetter = 'E';
-                                break;
-                        }
+                        grades.Add(number);
+                        line = reader.ReadLine();   
                     }
                 }
             }
-           return result;
+            return grades;
+        }
+
+        private Statistics CountStatistics(List<float> grades)
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in grades)
+            {
+                if (grade >= 0)
+                {
+                    statistics.Max = Math.Max(statistics.Max, grade);
+                    statistics.Min = Math.Min(statistics.Min, grade);
+                    statistics.Average += grade;
+                }
+            }
+
+            statistics.Average /= grades.Count;
+
+            switch (statistics.Average)
+            {
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+            }
+
+            return statistics;
         }
     }
 }
