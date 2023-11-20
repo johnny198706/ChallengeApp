@@ -1,15 +1,15 @@
-using challengeApp;
+using ChallengeApp;
 
 namespace ChallengeApp.Tests1
 {
-    public class Tests
+    public class EmployeeInMemoryTest
     {
       
 
         [Test]
         public void WhatIsMaxGrade()
         {
-            var employee = new Employee("Rafa³", "Stefañski", 32);
+            var employee = new EmployeeInMemory("Rafa³", "Stefañski",'M', 32);
 
             employee.AddGrade(7);
             employee.AddGrade(3);
@@ -19,13 +19,13 @@ namespace ChallengeApp.Tests1
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(7,statistics.Max);
+            Assert.That(statistics.Max, Is.EqualTo(7));
         }
 
         [Test]
         public void WhatIsMinGrade()
         {
-            var employee = new Employee("Rafa³", "Stefañski", 32);
+            var employee = new EmployeeInMemory("Rafa³", "Stefañski", 'M', 32);
 
             employee.AddGrade(7);
             employee.AddGrade(3);
@@ -35,13 +35,13 @@ namespace ChallengeApp.Tests1
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(3,statistics.Min);
+            Assert.That(statistics.Min, Is.EqualTo(3));
         }
 
         [Test]
         public void WhatIsTheAverageGrade()
         {
-            var employee = new Employee("Rafa³", "Stefañski", 32);
+            var employee = new EmployeeInMemory("Rafa³", "Stefañski", 'M', 32);
 
             employee.AddGrade(7);
             employee.AddGrade(3);
@@ -49,16 +49,16 @@ namespace ChallengeApp.Tests1
             employee.AddGrade(7);
             employee.AddGrade(5);
 
-            var statistics = employee.GetStatistics();  
+            var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(5.6f ,statistics.Average);   
+            Assert.That(statistics.Average, Is.EqualTo(5.6f));
         }
 
 
         [Test]
         public void WhatIsAverageLetter()
         {
-            var employee = new Employee("Rafa³", "Stefañski", 32);
+            var employee = new EmployeeInMemory("Rafa³", "Stefañski", 'M', 32);
 
             employee.AddGrade(7);
             employee.AddGrade(30);
@@ -68,7 +68,7 @@ namespace ChallengeApp.Tests1
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual('C', statistics.AverageLetter);
+            Assert.That(statistics.AverageLetter, Is.EqualTo('C'));
         }
     }  
 }

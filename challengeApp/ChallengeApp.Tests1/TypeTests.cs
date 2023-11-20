@@ -1,6 +1,6 @@
 ﻿
 
-using challengeApp;
+using ChallengeApp;
 
 namespace ChallengeApp.Tests1
 {
@@ -28,15 +28,15 @@ namespace ChallengeApp.Tests1
         [Test]
         public void TestReferenceType()
         {
-            var employee1 = GetEmployee("Rafał", "Stefański", 32);
-            var employee2 = GetEmployee("Nadia", "Nowakowska", 26);
+            var employee1 = GetEmployee("Rafał", "Stefański",'M', 32);
+            var employee2 = GetEmployee("Nadia", "Nowakowska",'M', 26);
 
             Assert.AreNotEqual(employee1, employee2);
         }
 
-        private Employee GetEmployee(string name, string surname, int age)
+        private EmployeeInMemory GetEmployee(string name, string surname,char sex, int age)
         {
-            return new Employee(name, surname, age);
+            return new EmployeeInMemory(name, surname,sex, age);
         }
 
 

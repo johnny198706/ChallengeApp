@@ -1,4 +1,4 @@
-﻿using challengeApp;
+﻿
 using ChallengeApp;
 
 Console.WriteLine("Witam w Programie MtW do oceny Pracownika");
@@ -6,10 +6,14 @@ Console.WriteLine("=========================================");
 Console.WriteLine();
 
 var employee = new EmployeeInFile("Rafał", "Stefański",'M', 32);
-employee.AddGrade(40);
-employee.AddGrade(60);
-employee.AddGrade(80);
-employee.AddGrade(50);
+//employee.GradeAdded += EmployeeGradeAdded;
+
+//void EmployeeGradeAdded(object sender, EventArgs args)
+//{
+//    Console.WriteLine("Dodano nową ocene");
+//}
+
+//employee.AddGrade(0.6f);
 
 //var manager = new Manager("Sebastian", "Bąk", 'M', 36);
 while (true)
