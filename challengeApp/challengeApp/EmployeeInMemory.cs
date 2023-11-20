@@ -2,11 +2,10 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
-        public delegate void GradeAddedDelegate(object senser, EventArgs args);
-
-        public event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
 
         private List<float> grades = new List<float>();
+
         public EmployeeInMemory(string name, string surname, char sex, int age)
             : base(name, surname, sex, age)
         {

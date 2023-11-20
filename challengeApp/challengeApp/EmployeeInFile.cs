@@ -5,6 +5,8 @@
     {       
         private const string fileName = "grades.txt";
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInFile(string name, string surname, char sex, int age)
             : base(name, surname, sex, age)
         {
@@ -12,11 +14,15 @@
 
         public override void AddGrade(float grade)
         {          
-                using (var writer = File.AppendText(fileName))
-                {
+            using (var writer = File.AppendText(fileName))
+            {
                     writer.WriteLine(grade);
-                    writer.Close();
-                }
+                    writer.Close();                   
+            }
+            if (GradeAdded != null)
+            {
+                GradeAdded(this, new EventArgs());
+            }
         }
 
         public override void AddGrade(string grade)

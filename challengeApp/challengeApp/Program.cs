@@ -5,15 +5,14 @@ Console.WriteLine("Witam w Programie MtW do oceny Pracownika");
 Console.WriteLine("=========================================");
 Console.WriteLine();
 
-var employee = new EmployeeInFile("Rafał", "Stefański",'M', 32);
-//employee.GradeAdded += EmployeeGradeAdded;
+var employee = new EmployeeInMemory("Rafał", "Stefański",'M', 32);
 
-//void EmployeeGradeAdded(object sender, EventArgs args)
-//{
-//    Console.WriteLine("Dodano nową ocene");
-//}
+employee.GradeAdded += EmployeeGradeAdded;
 
-//employee.AddGrade(0.6f);
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocene");
+}
 
 //var manager = new Manager("Sebastian", "Bąk", 'M', 36);
 while (true)
@@ -34,6 +33,7 @@ while (true)
         Console.WriteLine($"Exception catched: {e.Message}");
     }
 }
+
 var statistics = employee.GetStatistics();
 
 Console.WriteLine();
