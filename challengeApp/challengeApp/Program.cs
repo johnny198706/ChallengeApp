@@ -5,8 +5,7 @@ Console.WriteLine("Witam w Programie MtW do oceny Pracownika");
 Console.WriteLine("=========================================");
 Console.WriteLine();
 
-var employee = new EmployeeInMemory("Rafał", "Stefański",'M', 32);
-
+var employee = new EmployeeInFile("Rafał", "Stefański",'M', 32);
 employee.GradeAdded += EmployeeGradeAdded;
 
 void EmployeeGradeAdded(object sender, EventArgs args)
@@ -37,7 +36,7 @@ while (true)
 var statistics = employee.GetStatistics();
 
 Console.WriteLine();
-Console.WriteLine($"Average: {statistics.Average}");
+Console.WriteLine($"Average: {statistics.Average:N2}");
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");

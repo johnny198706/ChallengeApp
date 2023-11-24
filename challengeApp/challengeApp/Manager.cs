@@ -17,6 +17,8 @@ namespace ChallengeApp
         public int Age { get; private set; }
         public char Sex { get; private set; }
 
+        public event EmployeeBase.GradeAddedDelegate GradeAdded;
+
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -125,40 +127,11 @@ namespace ChallengeApp
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
+
             foreach (var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
+                statistics.AddGrade(grade);
             }
-
-            statistics.Average /= this.grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageNumber = '6';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageNumber = '5';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageNumber = '4';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageNumber = '3';
-                    break;
-                case var average when average >= 0:
-                    statistics.AverageNumber = '2';
-                    break;
-                default:
-                    statistics.AverageNumber = '1';
-                    break;
-            }
-
             return statistics;
         }
     }
